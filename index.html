@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>With Love - Cohort 288</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #ebfde1, #fffdcf);
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 5px;
+    }
+
+    .header {
+      color: #4CAF50;
+      padding: 15px 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .image-section img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      margin: 12px auto 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background-color: #388E3C;
+    }
+
+    .icon-envelope {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      animation: bounce 0.6s ease infinite alternate;
+    }
+
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        font-size: 20px;
+        padding: 10px;
+      }
+
+      .btn {
+        font-size: 15px;
+        padding: 8px 14px;
+        margin: 10px auto 6px;
+        gap: 6px;
+      }
+
+      .icon-envelope {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Cohort-288 Batch</div>
+    <div class="image-section">
+      <img src="group_pic.jpg" alt="Trainer Image" />
+    </div>
+    <button class="btn" id="confettiBtn">
+      View Message 
+      <span class="icon-envelope" aria-label="Heart Envelope" role="img">💌</span>
+    </button>
+  </div>
+
+  <!-- Audio element for sound -->
+  <audio id="clickSound" src="sound-1.mp3" preload="auto"></audio>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <!-- Script -->
+  <script>
+    const btn = document.getElementById('confettiBtn');
+    const sound = document.getElementById('clickSound');
+
+    btn.addEventListener('click', () => {
+      // Play sound
+      sound.play();
+
+      // Trigger confetti
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Redirect after 5 sec
+      setTimeout(() => {
+        window.location.href = 'message.html';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
